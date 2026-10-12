@@ -1,0 +1,158 @@
+@import 'tailwindcss';
+
+/* Token warna mengikuti logo Pertamina (merah #ED1B2F, biru #006CB8, hijau #ACC42A). */
+@theme {
+  --color-brand-red: #ed1b2f;
+  --color-brand-red-strong: #d0142b;
+  --color-brand-red-deep: #a90f22;
+  --color-brand-red-soft: #fdecee;
+  --color-brand-blue: #006cb8;
+  --color-brand-blue-strong: #005494;
+  --color-brand-blue-soft: #e6f0f8;
+  --color-brand-green: #acc42a;
+  --color-brand-green-strong: #4d6b0f;
+  --color-brand-green-soft: #f2f6e1;
+
+  --color-ink: #101828;
+  --color-muted: #475467;
+  --color-subtle: #667085;
+  --color-line: #e4e7ec;
+  --color-canvas: #f6f7f9;
+
+  --font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.04), 0 2px 8px rgb(16 24 40 / 0.05);
+  --shadow-card-hover: 0 4px 10px rgb(16 24 40 / 0.06), 0 14px 32px rgb(16 24 40 / 0.09);
+}
+
+:root {
+  --nav-h: 64px;
+  color-scheme: light;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --nav-h: 72px;
+  }
+}
+
+html {
+  /* Judul bagian tidak tertutup navigasi saat berpindah lewat tautan. */
+  scroll-padding-top: calc(var(--nav-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-brand-blue);
+  outline-offset: 3px;
+}
+
+/* ---- Hero ------------------------------------------------------------------- */
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'copy'
+    'scene'
+    'cta';
+}
+
+.hero-copy {
+  grid-area: copy;
+}
+.hero-scene {
+  grid-area: scene;
+  height: clamp(300px, 88vw, 480px);
+}
+.hero-cta {
+  grid-area: cta;
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hero-scene {
+    height: clamp(380px, 62vw, 540px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-rows: 1fr auto auto 1fr;
+    grid-template-areas:
+      '. scene'
+      'copy scene'
+      'cta scene'
+      '. scene';
+    column-gap: clamp(24px, 3vw, 48px);
+  }
+  .hero-scene {
+    height: clamp(460px, calc(100svh - var(--nav-h) - 88px), 760px);
+  }
+}
+
+.scene-backdrop {
+  background:
+    radial-gradient(ellipse 60% 48% at 52% 56%, rgb(0 108 184 / 0.07), transparent 70%),
+    radial-gradient(ellipse 80% 60% at 50% 60%, #f1f3f6, transparent 75%);
+}
+
+/* ---- Dialog profil -------------------------------------------------------- */
+
+.profile-dialog {
+  margin: 0 0 0 auto;
+  height: 100dvh;
+  max-height: 100dvh;
+  width: min(480px, 100vw);
+  max-width: 100vw;
+  padding: 0;
+  border: 0;
+  background: #fff;
+  color: inherit;
+  box-shadow: -24px 0 60px rgb(16 24 40 / 0.18);
+}
+
+.profile-dialog::backdrop {
+  background: rgb(16 24 40 / 0.42);
+  backdrop-filter: blur(2px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .profile-dialog[open] {
+    animation: panel-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .profile-dialog[open]::backdrop {
+    animation: fade-in 0.32s ease;
+  }
+}
+
+@keyframes panel-in {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}

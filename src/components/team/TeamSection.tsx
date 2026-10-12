@@ -8,7 +8,14 @@ import TeamFilter, { type FilterValue } from './TeamFilter';
 import MemberCard from './MemberCard';
 import MemberDetail from './MemberDetail';
 
-export default function TeamSection({ children }: { children?: React.ReactNode }) {
+interface TeamSectionProps {
+  /** Sorotan mentor, tampil paling awal. */
+  mentors?: React.ReactNode;
+  /** Asisten kelas, tampil setelah daftar anggota. */
+  assistants?: React.ReactNode;
+}
+
+export default function TeamSection({ mentors, assistants }: TeamSectionProps) {
   const [filter, setFilter] = useState<FilterValue>('all');
   const [selected, setSelected] = useState<Member | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
@@ -44,14 +51,23 @@ export default function TeamSection({ children }: { children?: React.ReactNode }
           <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{site.team.description}</p>
         </div>
 
-        <div className="mt-8 sm:mt-10">
+        {mentors}
+
+        <div className="mt-16 sm:mt-20">
+          <h3 id="anggota-title" className="text-2xl leading-tight font-extrabold tracking-[-0.015em] text-ink sm:text-3xl">
+            {site.team.membersTitle}
+          </h3>
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">{site.team.membersDescription}</p>
+        </div>
+
+        <div className="mt-8">
           <TeamFilter groups={workgroups} counts={counts} value={filter} onChange={setFilter} />
           <p aria-live="polite" className="mt-4 text-sm text-subtle">
             Menampilkan {visible.length} anggota — {filterLabel}
           </p>
         </div>
 
-        <ul className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <ul aria-labelledby="anggota-title" className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {visible.map((member) => (
             <li key={member.id}>
               <MemberCard member={member} onOpen={open} />
@@ -59,7 +75,7 @@ export default function TeamSection({ children }: { children?: React.ReactNode }
           ))}
         </ul>
 
-        {children}
+        {assistants}
       </div>
 
       <MemberDetail member={selected} onClose={close} />

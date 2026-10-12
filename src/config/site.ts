@@ -29,8 +29,12 @@ export const site = {
     title: 'Kenali Tim Kami',
     description:
       'Beragam pengalaman dan keahlian, dipertemukan oleh semangat belajar dan berkontribusi.',
-    mentorsTitle: 'Mentor & Pendamping',
-    mentorsDescription: 'Mendampingi tim sepanjang perjalanan Action Learning Project.',
+    mentorLabel: 'Mentor Kami',
+    mentorBadge: 'Mentor Tim ALP',
+    membersTitle: 'Anggota Tim',
+    membersDescription: 'Peserta dari beragam BUMN dan unit, terbagi dalam enam kelompok kerja.',
+    assistantsTitle: 'Asisten Kelas',
+    assistantsDescription: 'Mendukung kelancaran kegiatan tim sepanjang Action Learning Project.',
   },
 
   footer: {

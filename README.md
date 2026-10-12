@@ -18,7 +18,8 @@ npm run typecheck
 | Yang diganti | Lokasi |
 | --- | --- |
 | Nama, organisasi, peran, bio, keahlian, tujuan belajar anggota | `src/data/team.ts` → `members` |
-| Mentor & asisten kelas | `src/data/team.ts` → `mentors` |
+| Mentor (kartu sorotan di awal bagian tim: jabatan, area fokus, pesan) | `src/data/team.ts` → `mentors` |
+| Asisten kelas (setelah daftar anggota) | `src/data/team.ts` → `assistants` |
 | Nama kelompok kerja | `src/data/team.ts` → `workgroups` |
 | Teks hero, navigasi, judul bagian, footer (nama proyek, program, tahun) | `src/config/site.ts` |
 | Logo | ganti `public/brand/logo-pertamina.png`, lalu sesuaikan `logoWidth`/`logoHeight` di `src/config/site.ts` |
@@ -45,7 +46,7 @@ src/
     hero/ALPHero            teks, tombol, komposisi hero
     station/                PertaminaStationScene (integrasi React ↔ 3D), StationFallback (SVG statis)
     team/                   TeamSection, TeamFilter, MemberCard, MemberDetail, Avatar
-    mentors/MentorSection
+    mentors/                MentorSpotlight (sorotan mentor), AssistantSection
     footer/SiteFooter
   lib/station/
     config.ts               dimensi, posisi, warna, jalur mobil, kamera, timing

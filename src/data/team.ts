@@ -1,4 +1,4 @@
-import type { Member, Mentor, Workgroup } from '@/types/team';
+import type { Assistant, Member, Mentor, Workgroup } from '@/types/team';
 
 /**
  * SUMBER DATA PERSONEL — satu-satunya file yang perlu diubah untuk memperbarui profil.
@@ -191,19 +191,28 @@ export const members: Member[] = [
   },
 ];
 
+/**
+ * Mentor tampil paling awal di bagian tim sebagai kartu sorotan.
+ * Bila ada lebih dari satu mentor, setiap mentor mendapat kartu sorotan sendiri.
+ */
 export const mentors: Mentor[] = [
   {
     id: 'mentor-01',
     name: 'Mentor 01',
-    type: 'mentor',
-    institution: 'Institusi / Jabatan',
-    description: 'Bidang pendampingan mentor. Ganti melalui src/data/team.ts.',
+    position: 'Jabatan Mentor',
+    institution: 'Direktorat / Unit, Pertamina',
+    description: 'Bidang pendampingan mentor kepada tim. Ganti melalui src/data/team.ts.',
+    focusAreas: ['Area fokus 1', 'Area fokus 2', 'Area fokus 3'],
+    message: 'Pesan atau kutipan singkat dari mentor untuk tim (opsional).',
     photo: '/avatars/dummy-1.svg',
   },
+];
+
+/** Asisten kelas tampil setelah daftar anggota. */
+export const assistants: Assistant[] = [
   {
     id: 'asisten-01',
     name: 'Asisten Kelas 01',
-    type: 'asisten',
     institution: 'Institusi / Jabatan',
     description: 'Bentuk dukungan asisten kelas kepada tim. Ganti melalui src/data/team.ts.',
     photo: '/avatars/dummy-2.svg',

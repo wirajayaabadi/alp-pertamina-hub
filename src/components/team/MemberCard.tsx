@@ -26,7 +26,7 @@ export default function MemberCard({ member, onOpen }: MemberCardProps) {
           <span aria-hidden="true" className={`size-1.5 rounded-full ${accent.dot}`} />
           {group.name}
         </span>
-        <h3 className="mt-3 text-lg leading-snug font-bold text-ink">{member.name}</h3>
+        <h4 className="mt-3 text-lg leading-snug font-bold text-ink">{member.name}</h4>
         <p className="mt-0.5 text-sm font-medium text-muted">{member.company}</p>
         <p className="mt-1 text-sm text-subtle">{member.role}</p>
         <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">{member.summary}</p>

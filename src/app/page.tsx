@@ -1,7 +1,8 @@
 import SiteHeader from '@/components/navigation/SiteHeader';
 import ALPHero from '@/components/hero/ALPHero';
 import TeamSection from '@/components/team/TeamSection';
-import MentorSection from '@/components/mentors/MentorSection';
+import MentorSpotlight from '@/components/mentors/MentorSpotlight';
+import AssistantSection from '@/components/mentors/AssistantSection';
 import SiteFooter from '@/components/footer/SiteFooter';
 
 export default function HomePage() {
@@ -16,9 +17,7 @@ export default function HomePage() {
       <SiteHeader />
       <main>
         <ALPHero />
-        <TeamSection>
-          <MentorSection />
-        </TeamSection>
+        <TeamSection mentors={<MentorSpotlight />} assistants={<AssistantSection />} />
       </main>
       <SiteFooter />
     </>

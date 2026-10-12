@@ -38,10 +38,25 @@ export interface Member {
 export interface Mentor {
   id: string;
   name: string;
-  type: 'mentor' | 'asisten';
+  /** Jabatan, mis. jabatan di Pertamina. */
+  position: string;
+  /** Direktorat, unit, atau institusi. */
+  institution?: string;
+  /** Bidang pendampingan kepada tim. */
+  description: string;
+  /** Opsional: area fokus pendampingan (tampil sebagai label). */
+  focusAreas?: string[];
+  /** Opsional: pesan atau kutipan mentor. Kosongkan bila belum ada yang disetujui. */
+  message?: string;
+  photo: string;
+}
+
+export interface Assistant {
+  id: string;
+  name: string;
   /** Institusi atau jabatan, jika tersedia. */
   institution?: string;
-  /** Bidang pendampingan atau dukungan. */
+  /** Bentuk dukungan kepada tim. */
   description: string;
   photo: string;
 }
